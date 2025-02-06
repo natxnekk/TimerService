@@ -31,13 +31,13 @@ type class = {
 
 type object = typeof(setmetatable({} :: {
 	
-	length: number,
-	timeLeft: number,
-	isRunning: boolean,
+	_length: number,
+	_timeLeft: number,
+	_isRunning: boolean,
 	
-	endedCallback: () -> (),
+	_endedCallback: () -> (),
 	
-	thread: thread
+	_thread: thread
 	
 }, {} :: class))
 
@@ -52,12 +52,12 @@ type object = typeof(setmetatable({} :: {
 ]]
 function class.new(length, endedCallback)
 	return setmetatable({
-		['length'] = length,
-		['timeLeft'] = 0,
-		['endedCallback'] = endedCallback,
-		['isRunning'] = false,
+		_length = length,
+		_timeLeft = 0,
+		_endedCallback = endedCallback,
+		_isRunning = false,
 		
-		['thread'] = nil
+		_thread = nil
 	}, class :: class) :: object
 end
 
@@ -66,42 +66,40 @@ end
 	creates a new one when a timer doesn't exist yet
 ]]
 function class:start()
-	if self.thread then
-		self.isRunning = true
-		coroutine.resume(self.thread)
+	if self._thread and coroutine.status(self._thread) == "suspended" then
+		self._isRunning = true
+		coroutine.resume(self._thread)
 		return
 	end
 	
-	self.timeLeft = self.length
-	self.isRunning = true
+	self._timeLeft = self._length
+	self._isRunning = true
 	
-	self.thread = task.spawn(function()
-		while self.timeLeft > 0 do
-			if not self.isRunning then
-				coroutine.yield(self.thread)
+	self._thread = task.spawn(function()
+		while self._timeLeft > 0 do
+			if not self._isRunning then
+				coroutine.yield(self._thread)
 				continue
 			end
 			
-			self.timeLeft -= task.wait()
+			self._timeLeft -= task.wait()
 
-			if self.timeLeft <= 0 then
-				if self.endedCallback then self.endedCallback() end
-				self.isRunning = false
-				self.timeLeft = 0
+			if self._timeLeft <= 0 then
+				if self._endedCallback then self._endedCallback() end
+				self._isRunning = false
+				self._timeLeft = 0
 				
 				break
 			end
 		end
 	end)
-	
-	coroutine.resume(self.thread)
 end
 
 --[[
 	Pauses the timer for later resumption
 ]]
 function class:pause()
-	self.isRunning = false
+	self._isRunning = false
 end
 
 --[[
@@ -111,19 +109,19 @@ end
 ]]
 function class:reset(pause)
 	if pause then
-		self.isRunning = false
+		self._isRunning = false
 	end
 	
-	self.timeLeft = self.length
+	self._timeLeft = self._length
 end
 
 --[[
 	Cleans the memory from the timer
 ]]
 function class:destroy()
-	if self.thread then
-		coroutine.close(self.thread)
-		self.thread = nil
+	if self._thread then
+		coroutine.close(self._thread)
+		self._thread = nil
 	end
 	
 	table.clear(self)
@@ -132,14 +130,14 @@ end
 	@return boolean                   --Returns if the timer is currently running       
 ]]
 function class:getIsRunning()
-	return self.isRunning
+	return self._isRunning
 end
 
 --[[
 	@return number                   --Returns time left for the callback to be executed
 ]]
 function class:getTimeLeft()
-	return self.timeLeft
+	return self._timeLeft
 end
 
 return class
