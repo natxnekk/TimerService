@@ -1,6 +1,6 @@
 # Timer Service
 
-A lightweight and efficient timer service for **Roblox Studio**, made by **[@natxnek](https://github.com/natxnek)**.  
+A lightweight and efficient timer service for **Roblox Studio**, made by **[@natxnek](https://github.com/natxnekk)**.  
 This module allows you to create, pause, reset, and destroy timers easily.
 
 ## 🚀 Features
