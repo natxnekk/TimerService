@@ -93,8 +93,6 @@ function class:start()
 			end
 		end
 	end)
-	
-	coroutine.resume(self.thread)
 end
 
 --[[
