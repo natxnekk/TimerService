@@ -68,16 +68,17 @@ end
 function class:start()
 	if self.thread then
 		self.isRunning = true
+		coroutine.resume(self.thread)
 		return
 	end
 	
 	self.timeLeft = self.length
 	self.isRunning = true
 	
-	self.thread = coroutine.create(function()
+	self.thread = task.spawn(function()
 		while self.timeLeft > 0 do
 			if not self.isRunning then
-				task.wait()
+				coroutine.yield(self.thread)
 				continue
 			end
 			
@@ -125,7 +126,7 @@ function class:destroy()
 		self.thread = nil
 	end
 	
-	self = nil
+	table.clear(self)
 end
 --[[
 	@return boolean                   --Returns if the timer is currently running       
