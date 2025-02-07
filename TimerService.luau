@@ -54,7 +54,7 @@ function class.new(length, endedCallback)
 	return setmetatable({
 		_length = length,
 		_timeLeft = 0,
-		_endedCallback = endedCallback,
+		_endedCallback = endedCallback or function() end,
 		_isRunning = false,
 		
 		_thread = nil
@@ -85,7 +85,8 @@ function class:start()
 			self._timeLeft -= task.wait()
 
 			if self._timeLeft <= 0 then
-				if self._endedCallback then self._endedCallback() end
+				self._endedCallback()
+				
 				self._isRunning = false
 				self._timeLeft = 0
 				
