@@ -86,7 +86,7 @@ function class:start()
 
 			if self._timeLeft <= 0 then
 				self._endedCallback()
-				
+
 				self._isRunning = false
 				self._timeLeft = 0
 				
@@ -104,7 +104,7 @@ function class:pause()
 end
 
 --[[
-	@param  stop: boolean              --Should the timer be paused after resetting
+	@param  pause: boolean              --Should the timer be paused after resetting
 	
 	Resets the timer's time left to timer's default length
 ]]
