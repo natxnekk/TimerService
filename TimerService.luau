@@ -1,5 +1,5 @@
 --[[
-	Service made by @natxnek [discord: @natixo]
+	Service made by @natxnek [discord: @natxnek]
 	
 	Memory usage:
 		- Variable: ~600 Bytes
