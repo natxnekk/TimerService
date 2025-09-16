@@ -5,12 +5,12 @@
 		- Variable: ~600 Bytes
 		- Worker:   ~600 Bytes
 	
-	Feel free to fork the service and update it for your purposes
+	License: MIT License  
+	Copyright (c) 2025 @natxnek  
 	
-	License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
-	Copyright (c) 2025 @natxnek
+	You are free to use, modify, and include this service in commercial projects (e.g., monetized Roblox games). 
 	
-	For the full license, visit: https://creativecommons.org/licenses/by-nc/4.0/
+	For the full license, see the LICENSE file or visit: https://opensource.org/licenses/MIT
 ]]
 
 local class = {} :: class
