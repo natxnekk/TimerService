@@ -13,11 +13,11 @@ This module allows you to create, pause, reset, and destroy timers easily.
 ---
 
 ## 📜 License  
-This project is licensed under the **Creative Commons BY-NC 4.0** license.  
-You are **free to use, modify, and share** this module **for personal and educational purposes**.  
-⚠️ **Commercial use (selling, monetization) is strictly prohibited.**  
+This project is licensed under the **MIT License**.  
+You are **free to use, modify, share, and include this module in commercial projects**, including monetized Roblox games.  
+✅ **Attribution is required** – please keep the original license text and credit the author.  
 
-Read the full license [here](https://creativecommons.org/licenses/by-nc/4.0/).
+Read the full license [here](./LICENSE).
 
 ---
 
