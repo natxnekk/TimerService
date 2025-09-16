@@ -77,7 +77,7 @@ myTimer:destroy() -- Cleans up memory
 
 ## 👤 Author
 - **[@natxnek](https://github.com/natxnek)**  
-- Discord: **@natixo**
+- Discord: **@natxnek**
 
 ---
 
