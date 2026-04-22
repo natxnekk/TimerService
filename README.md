@@ -3,6 +3,8 @@
 A lightweight and efficient timer service for **Roblox Studio**, made by **[@natxnek](https://github.com/natxnekk)**.  
 This module allows you to create, pause, reset, and destroy timers easily.
 
+<i>This module is designed for the old typesolver, the source code is original and only this readme file was generated using AI</i>
+
 ## 🚀 Features
 - 📏 **Small memory footprint** (~600 Bytes per instance)
 - ⏳ **Start, pause, and reset** timers
